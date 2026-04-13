@@ -8,30 +8,37 @@ var time_between:=2.0
 var currentpipe:Pipe
 var score:int=0
 var is_pipe=true
+var just_started=true
 func _ready() -> void:
 	$"../ground/AnimationPlayer".play("ground")
 	
 
 func _input(event: InputEvent) -> void:
-
+	if is_pipe:
 		if Input.is_action_just_pressed("lock"):
-			if currentpipe==null:
+			if currentpipe==null and just_started:
 				spawn_pipe.rpc()
-			elif currentpipe and not currentpipe.is_updown:
-				currentpipe.is_inout=false
+				just_started=false
+			elif currentpipe and not currentpipe.is_updown1:
+				currentpipe.is_inout.rpc(false)
 			else:
-				currentpipe.is_inout=true
-				currentpipe.is_updown=false	
-		print(currentpipe)
+				currentpipe.is_inout.rpc(true)
+				currentpipe.is_updown.rpc(false)
 		
 @rpc("any_peer","call_local")		
 func spawn_pipe():
-	currentpipe = pipe_obj.instantiate()
-	add_child(currentpipe)
-	
+	var pipes = pipe_obj.instantiate()
+	add_child(pipes)
+	currentpipe=pipes
+	currentpipe.send_pipe.connect(_on_pipe_sent)
+	currentpipe.Gameover.connect(_on_game_over)
+	currentpipe.point.connect(_on_point)
+@rpc("any_peer","call_local")	
 func _on_pipe_sent():
 	pipe_timer.start()
+	print(multiplayer.get_unique_id())
 
+@rpc("any_peer","call_local")	
 func _on_game_over():
 	get_tree().paused = true
 	%gameover.show()
@@ -52,13 +59,16 @@ func _on_point():
 		%score.texture=scores[int(str(score)[0])]
 		%score2.texture=scores[int(str(score)[1])]	
 		%score3.texture=scores[int(str(score)[2])]	
+		
 func _on_timer_timeout() -> void:
 	spawn_pipe.rpc()
-	pipeChanged.rpc()
-@rpc("any_peer","call_local")
-func pipeChanged():
-	currentpipe.send_pipe.connect(_on_pipe_sent)
-	currentpipe.Gameover.connect(_on_game_over)
-	currentpipe.point.connect(_on_point)
+	
+
+
 func _on_ground_body_entered(body: Node2D) -> void:
 	_on_game_over()
+
+@rpc("authority", "call_local")
+func set_team(cond:bool) -> void:
+	is_pipe=cond
+	just_started=cond

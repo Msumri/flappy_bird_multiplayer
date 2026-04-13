@@ -20,7 +20,7 @@ func spawn_player(id: int) -> void:
 
 	get_node(spawn_path).call_deferred("add_child", player)
 	player.position=Vector2(55,321)
-
+	$"../pipe_genrator".set_team.rpc(false)
 # In this function, which is connected to the "host_started" signal in the high_level_network_handler
 # class, we spawn the server player. Easy right?
 func spawn_host_player() -> void:
