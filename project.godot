@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Fallpy_bird_multiplayer"
+run/main_scene="uid://d3qc2nfv8on7t"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Multiplayer="*uid://teqak75xmkse"
 
 [display]
 

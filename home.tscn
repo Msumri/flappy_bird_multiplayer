@@ -1,0 +1,128 @@
+[gd_scene format=3 uid="uid://d3qc2nfv8on7t"]
+
+[ext_resource type="Texture2D" uid="uid://bujq32uj83j5i" path="res://assets/sprites/background-day.png" id="1_1ey7h"]
+[ext_resource type="Script" uid="uid://cubpv3hxp0j73" path="res://home.gd" id="1_o1ld7"]
+[ext_resource type="Texture2D" uid="uid://dk3xgc5m0lp3h" path="res://assets/sprites/message.png" id="2_o1ld7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ayvv"]
+atlas = ExtResource("2_o1ld7")
+region = Rect2(0, 0, 184, 48)
+
+[sub_resource type="Theme" id="Theme_1ey7h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1ld7"]
+bg_color = Color(0.89411765, 0.3764706, 0.09411765, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ayvv"]
+bg_color = Color(0.48098075, 0.18295765, 0.015345768, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w1mvj"]
+bg_color = Color(0.99110454, 0.57383263, 0.39370903, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxycn"]
+bg_color = Color(0.77950305, 0.32006535, 0.055580437, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_detail = 1
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_offset = Vector2(0, 2)
+
+[node name="Home" type="Control" unique_id=1404471142]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o1ld7")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1733027649]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_1ey7h")
+stretch_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1893035005]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1082696339]
+layout_mode = 2
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_2ayvv")
+stretch_mode = 2
+
+[node name="host" type="Button" parent="VBoxContainer" unique_id=1808950804]
+process_mode = 3
+physics_interpolation_mode = 1
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_1ey7h")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o1ld7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2ayvv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w1mvj")
+text = "HOST"
+
+[node name="ipinput" type="LineEdit" parent="VBoxContainer" unique_id=2075408965]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxFlat_lxycn")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lxycn")
+text = "192.168.96.85"
+placeholder_text = "192.169.1.1"
+alignment = 1
+
+[node name="join" type="Button" parent="VBoxContainer" unique_id=156388780]
+process_mode = 3
+physics_interpolation_mode = 1
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_1ey7h")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o1ld7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2ayvv")
+theme_override_styles/hover = SubResource("StyleBoxFlat_w1mvj")
+text = "JOIN"
+
+[connection signal="pressed" from="VBoxContainer/host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="VBoxContainer/join" to="." method="_on_join_pressed"]

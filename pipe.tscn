@@ -12,6 +12,26 @@ size = Vector2(44, 316)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fep1"]
 size = Vector2(19, 429)
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_78010"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Timer:wait_time")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Timer:one_shot")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("up:position")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("down:position")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("score:position")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+
 [node name="pipe" type="Node2D" unique_id=2056681395]
 script = ExtResource("1_78010")
 
@@ -50,6 +70,9 @@ shape = SubResource("RectangleShape2D_8fep1")
 wait_time = 3.0
 one_shot = true
 autostart = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1917599493]
+replication_config = SubResource("SceneReplicationConfig_78010")
 
 [connection signal="body_entered" from="up" to="." method="_on_up_body_entered"]
 [connection signal="body_entered" from="down" to="." method="_on_down_body_entered"]

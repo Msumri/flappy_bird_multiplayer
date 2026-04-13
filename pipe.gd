@@ -35,7 +35,9 @@ func _process(delta: float) -> void:
 		if send:
 			send_pipe.emit()
 			send=false
-
+	if global_position.x <-20:
+		queue_free()
+		
 func in_out():
 	var offset = pow(sin(time * frequency), 2) * amplitude	
 	up.position.y=up_start_y - offset

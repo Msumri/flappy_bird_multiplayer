@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://ijkd5nf4hsqm"]
+
+[ext_resource type="Script" uid="uid://dtp5xn1bf8cwp" path="res://bird.gd" id="1_cchwj"]
+[ext_resource type="Texture2D" uid="uid://b1l5vjxrfv6ph" path="res://assets/sprites/yellowbird-downflap.png" id="2_6ljjq"]
+[ext_resource type="Texture2D" uid="uid://b3lph2ukamg41" path="res://assets/sprites/yellowbird-midflap.png" id="3_axl6x"]
+[ext_resource type="Texture2D" uid="uid://dndwv1m0gvbaf" path="res://assets/sprites/yellowbird-upflap.png" id="4_yr30m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ys0ae"]
+atlas = ExtResource("2_6ljjq")
+region = Rect2(0, 0, 34, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8fep1"]
+atlas = ExtResource("3_axl6x")
+region = Rect2(0, 0, 34, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q2o1f"]
+atlas = ExtResource("4_yr30m")
+region = Rect2(0, 0, 34, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0e1j5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ys0ae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fep1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q2o1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8fep1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yxi3h"]
+radius = 11.0
+height = 28.0
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_08fvl"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="bird" type="CharacterBody2D" unique_id=1585531778]
+z_index = 1
+script = ExtResource("1_cchwj")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=37284260]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_0e1j5")
+frame_progress = 0.4711661
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=406247325]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_yxi3h")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1110460067]
+replication_config = SubResource("SceneReplicationConfig_08fvl")
