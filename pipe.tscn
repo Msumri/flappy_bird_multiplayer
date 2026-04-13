@@ -45,3 +45,13 @@ shape = SubResource("RectangleShape2D_ys0ae")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="score" unique_id=664744777]
 position = Vector2(0.5, 14.5)
 shape = SubResource("RectangleShape2D_8fep1")
+
+[node name="Timer" type="Timer" parent="." unique_id=1299473003]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="up" to="." method="_on_up_body_entered"]
+[connection signal="body_entered" from="down" to="." method="_on_down_body_entered"]
+[connection signal="body_entered" from="score" to="." method="_on_score_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
