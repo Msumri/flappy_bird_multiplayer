@@ -113,23 +113,6 @@ unique_name_in_owner = true
 wait_time = 2.0
 one_shot = true
 
-[node name="waiting" type="CanvasLayer" parent="pipe_genrator" unique_id=1627827909]
-unique_name_in_owner = true
-visible = false
-
-[node name="PanelContainer" type="PanelContainer" parent="pipe_genrator/waiting" unique_id=1582651772]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Label" type="Label" parent="pipe_genrator/waiting/PanelContainer" unique_id=1721946317]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 27
-text = "Waiting on peer..."
-
 [node name="gameover" type="CanvasLayer" parent="." unique_id=228022917]
 unique_name_in_owner = true
 visible = false
@@ -154,7 +137,28 @@ layout_mode = 2
 texture = ExtResource("8_0e1j5")
 stretch_mode = 2
 
-[node name="TextureRect2" type="TextureRect" parent="gameover/VBoxContainer" unique_id=1668147607]
+[node name="HBoxContainer" type="HBoxContainer" parent="gameover/VBoxContainer" unique_id=836377582]
+layout_mode = 2
+alignment = 1
+
+[node name="finalscorebird1" type="TextureRect" parent="gameover/VBoxContainer/HBoxContainer" unique_id=1668147607]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("9_vvp0i")
+stretch_mode = 2
+
+[node name="finalscorebird2" type="TextureRect" parent="gameover/VBoxContainer/HBoxContainer" unique_id=396977533]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("9_vvp0i")
+stretch_mode = 2
+
+[node name="finalscorebird3" type="TextureRect" parent="gameover/VBoxContainer/HBoxContainer" unique_id=100591256]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 texture = ExtResource("9_vvp0i")
@@ -241,9 +245,9 @@ stretch_mode = 2
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=284805625]
 _spawnable_scenes = PackedStringArray("uid://ijkd5nf4hsqm")
 spawn_path = NodePath("..")
-spawn_limit = 2
 script = ExtResource("17_gyfnk")
 network_player = ExtResource("1_jypvl")
 
 [connection signal="timeout" from="pipe_genrator/pipe_timer" to="pipe_genrator" method="_on_timer_timeout"]
+[connection signal="pressed" from="gameover/VBoxContainer/replay" to="pipe_genrator" method="_on_replay_pressed"]
 [connection signal="body_entered" from="ground" to="pipe_genrator" method="_on_ground_body_entered"]
