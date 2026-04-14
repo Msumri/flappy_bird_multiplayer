@@ -1,6 +1,6 @@
 extends Node2D
 @onready var pipe_timer: Timer = %pipe_timer
-@onready var replay: Button = $"../gameover/VBoxContainer/replay"
+@onready var replay: Button = %replay
 
 @export var scores:Array[Texture2D]=[]
 @export var pipe_obj :PackedScene

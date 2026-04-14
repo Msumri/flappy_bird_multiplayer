@@ -97,6 +97,9 @@ _data = {
 &"ground": SubResource("Animation_08fvl")
 }
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_jypvl"]
+normal = Vector2(0, 1)
+
 [node name="Node2D" type="Node2D" unique_id=2012117335]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1212879039]
@@ -165,6 +168,7 @@ texture = ExtResource("9_vvp0i")
 stretch_mode = 2
 
 [node name="replay" type="Button" parent="gameover/VBoxContainer" unique_id=1685814764]
+unique_name_in_owner = true
 process_mode = 3
 physics_interpolation_mode = 1
 layout_mode = 2
@@ -247,6 +251,12 @@ _spawnable_scenes = PackedStringArray("uid://ijkd5nf4hsqm")
 spawn_path = NodePath("..")
 script = ExtResource("17_gyfnk")
 network_player = ExtResource("1_jypvl")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1562278495]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1417073650]
+position = Vector2(136, 0)
+shape = SubResource("WorldBoundaryShape2D_jypvl")
 
 [connection signal="timeout" from="pipe_genrator/pipe_timer" to="pipe_genrator" method="_on_timer_timeout"]
 [connection signal="pressed" from="gameover/VBoxContainer/replay" to="pipe_genrator" method="_on_replay_pressed"]
