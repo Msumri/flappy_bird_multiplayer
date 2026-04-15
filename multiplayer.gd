@@ -5,7 +5,7 @@ signal host_started()
 const PORT: int = 42069 # Below 65535 (16-bit unsigned max value)
 var ip:="localhsot"
 var peer: ENetMultiplayerPeer
-
+var p2_id:int
 func start_server() -> void:
 	peer = ENetMultiplayerPeer.new()
 	var success = setup_upnp(PORT)
@@ -24,7 +24,7 @@ func start_client(ip_input:String) -> void:
 	peer = ENetMultiplayerPeer.new()
 	peer.create_client(ip_input, PORT)
 	multiplayer.multiplayer_peer = peer
-
+	
 # To create a server+player, or host player, we create a new function "start_host()".
 # This function then starts the server like normal, but also calls a signal "host_started".
 # Since this is an autoloaded class, other functions can connect to this signal, like I did

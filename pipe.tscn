@@ -34,8 +34,6 @@ properties/5/replication_mode = 1
 
 [node name="pipe" type="Node2D" unique_id=2056681395]
 script = ExtResource("1_78010")
-amplitude = null
-frequency = null
 
 [node name="up" type="Area2D" parent="." unique_id=1232150486]
 unique_name_in_owner = true

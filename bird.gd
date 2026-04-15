@@ -7,16 +7,14 @@ const JUMP_VELOCITY = -285.0
 @export var playable:=false
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
-	
+	global_position=Vector2(55,321)
+
 func _ready() -> void:
 	sprite_2d.play("default")
-	print("PLAYER READY:", name)
-	print("AUTHORITY:", get_multiplayer_authority())
-	print("IS AUTH:", is_multiplayer_authority())
 
 func _physics_process(delta: float) -> void:
-	if !is_multiplayer_authority(): return
-	if !playable: return
+	#if !is_multiplayer_authority(): return
+	#if !playable: return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta

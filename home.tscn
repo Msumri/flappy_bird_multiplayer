@@ -8,8 +8,6 @@
 atlas = ExtResource("2_o1ld7")
 region = Rect2(0, 0, 184, 48)
 
-[sub_resource type="Theme" id="Theme_1ey7h"]
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o1ld7"]
 bg_color = Color(0.89411765, 0.3764706, 0.09411765, 1)
 border_width_left = 2
@@ -82,21 +80,41 @@ offset_bottom = 40.0
 texture = ExtResource("1_1ey7h")
 stretch_mode = 2
 
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1082696339]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 104.0
+offset_right = 236.0
+offset_bottom = 152.0
+size_flags_horizontal = 4
+texture = SubResource("AtlasTexture_2ayvv")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="TextureRect2" unique_id=191143922]
+layout_mode = 0
+offset_left = 97.0
+offset_top = -40.0
+offset_right = 269.0
+rotation = 0.337625
+theme_override_colors/font_color = Color(0.34509805, 0.84705883, 0.34901962, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5058824)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 9
+theme_override_font_sizes/font_size = 35
+text = "Multiplayer"
+horizontal_alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1893035005]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 40.0
+offset_top = 201.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 25
-
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=1082696339]
-layout_mode = 2
-size_flags_horizontal = 4
-texture = SubResource("AtlasTexture_2ayvv")
-stretch_mode = 2
 
 [node name="host" type="Button" parent="VBoxContainer" unique_id=1808950804]
 process_mode = 3
@@ -104,7 +122,9 @@ physics_interpolation_mode = 1
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-theme = SubResource("Theme_1ey7h")
+theme_override_colors/font_outline_color = Color(0.32941177, 0.21960784, 0.2784314, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_o1ld7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2ayvv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_w1mvj")
@@ -114,9 +134,11 @@ text = "HOST"
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0.32941177, 0.21960784, 0.2784314, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_lxycn")
 theme_override_styles/focus = SubResource("StyleBoxFlat_lxycn")
-text = "192.168.1.138"
 placeholder_text = "192.169.1.1"
 alignment = 1
 
@@ -126,7 +148,9 @@ physics_interpolation_mode = 1
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-theme = SubResource("Theme_1ey7h")
+theme_override_colors/font_outline_color = Color(0.32941177, 0.21960784, 0.2784314, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_o1ld7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2ayvv")
 theme_override_styles/hover = SubResource("StyleBoxFlat_w1mvj")
@@ -160,5 +184,6 @@ size_flags_vertical = 0
 text = "X"
 
 [connection signal="pressed" from="VBoxContainer/host" to="." method="_on_host_pressed"]
+[connection signal="text_submitted" from="VBoxContainer/ipinput" to="." method="_on_ipinput_text_submitted"]
 [connection signal="pressed" from="VBoxContainer/join" to="." method="_on_join_pressed"]
 [connection signal="pressed" from="waiting/PanelContainer/x" to="." method="_on_x_pressed"]

@@ -4,7 +4,12 @@ extends Control
 var ready_players := 0
 var expected_players := 1
 
+func _ready():
+	multiplayer.peer_connected.connect(_on_player_connected)
 
+func _on_player_connected(id):
+	Multiplayer.p2_id=id
+	print(Multiplayer.p2_id)
 func _on_host_pressed() -> void:	
 	Multiplayer.start_host()
 	%waiting.show()
@@ -43,3 +48,7 @@ func request_start():
 func _on_x_pressed() -> void:
 	Multiplayer.kill_connection()
 	%waiting.hide()
+
+
+func _on_ipinput_text_submitted(new_text: String) -> void:
+	_on_join_pressed()

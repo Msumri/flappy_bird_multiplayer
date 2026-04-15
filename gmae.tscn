@@ -13,11 +13,13 @@
 [ext_resource type="Texture2D" uid="uid://h2jkq1k55dwt" path="res://assets/sprites/4.png" id="16_k0uay"]
 [ext_resource type="Texture2D" uid="uid://7p0r15itdyju" path="res://assets/sprites/5.png" id="17_5ibbd"]
 [ext_resource type="Script" uid="uid://gkf33qku3tkj" path="res://multiplayer_spawner.gd" id="17_gyfnk"]
+[ext_resource type="Texture2D" uid="uid://dt4ese8qniijf" path="res://assets/birdiconoff.png" id="17_wabm4"]
 [ext_resource type="Texture2D" uid="uid://b6co623glw8w6" path="res://assets/box bg.png" id="18_g3btn"]
 [ext_resource type="Texture2D" uid="uid://fmy64v56jabx" path="res://assets/sprites/6.png" id="18_ssuiv"]
 [ext_resource type="Texture2D" uid="uid://bavuw57hfn7bn" path="res://assets/birdicon.png" id="19_hgayi"]
 [ext_resource type="Texture2D" uid="uid://cdh71v8i5h1h" path="res://assets/sprites/7.png" id="19_sv1gj"]
 [ext_resource type="Texture2D" uid="uid://boxqj6tmyqgev" path="res://assets/sprites/8.png" id="20_02imt"]
+[ext_resource type="Texture2D" uid="uid://bqe17qu5jv6f7" path="res://assets/pipeiconoff.png" id="20_qhfwi"]
 [ext_resource type="Texture2D" uid="uid://dwb02g2dmosro" path="res://assets/pipeicon.png" id="20_wabm4"]
 [ext_resource type="Texture2D" uid="uid://dqbxrqc2gt7gl" path="res://assets/sprites/9.png" id="21_ems8l"]
 
@@ -249,12 +251,6 @@ layout_mode = 2
 texture = ExtResource("9_vvp0i")
 stretch_mode = 2
 
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=284805625]
-_spawnable_scenes = PackedStringArray("uid://ijkd5nf4hsqm")
-spawn_path = NodePath("..")
-script = ExtResource("17_gyfnk")
-network_player = ExtResource("1_jypvl")
-
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1562278495]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1417073650]
@@ -263,8 +259,7 @@ shape = SubResource("WorldBoundaryShape2D_jypvl")
 
 [node name="select_yourRole" type="CanvasLayer" parent="." unique_id=194964375]
 unique_name_in_owner = true
-process_mode = 2
-process_priority = 1
+process_mode = 3
 
 [node name="NinePatchRect" type="NinePatchRect" parent="select_yourRole" unique_id=940107962]
 anchors_preset = 8
@@ -295,7 +290,8 @@ grow_vertical = 2
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="Label" type="Label" parent="select_yourRole/NinePatchRect/VBoxContainer" unique_id=124458365]
+[node name="selectRoll" type="Label" parent="select_yourRole/NinePatchRect/VBoxContainer" unique_id=124458365]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Select your Role !"
@@ -308,12 +304,25 @@ alignment = 1
 [node name="bird" type="TextureButton" parent="select_yourRole/NinePatchRect/VBoxContainer/HBoxContainer" unique_id=310174797]
 unique_name_in_owner = true
 layout_mode = 2
-texture_normal = ExtResource("19_hgayi")
+texture_normal = ExtResource("17_wabm4")
+texture_pressed = ExtResource("20_wabm4")
+texture_hover = ExtResource("19_hgayi")
+texture_disabled = ExtResource("17_wabm4")
 
 [node name="pip" type="TextureButton" parent="select_yourRole/NinePatchRect/VBoxContainer/HBoxContainer" unique_id=1548735252]
 unique_name_in_owner = true
 layout_mode = 2
-texture_normal = ExtResource("20_wabm4")
+texture_normal = ExtResource("20_qhfwi")
+texture_pressed = ExtResource("20_wabm4")
+texture_hover = ExtResource("20_wabm4")
+texture_disabled = ExtResource("20_qhfwi")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=1584964236]
+_spawnable_scenes = PackedStringArray("uid://ijkd5nf4hsqm")
+spawn_path = NodePath("..")
+spawn_limit = 1
+script = ExtResource("17_gyfnk")
+network_player = ExtResource("1_jypvl")
 
 [connection signal="timeout" from="pipe_genrator/pipe_timer" to="pipe_genrator" method="_on_timer_timeout"]
 [connection signal="pressed" from="gameover/VBoxContainer/replay" to="pipe_genrator" method="_on_replay_pressed"]

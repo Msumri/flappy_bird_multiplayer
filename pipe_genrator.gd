@@ -83,12 +83,13 @@ func _on_timer_timeout() -> void:
 
 
 func _on_ground_body_entered(body: Node2D) -> void:
-	_on_game_over()
+	_on_game_over.rpc( )
 
-@rpc("authority", "call_local")
+@rpc("authority","call_remote")
 func set_team(cond:bool) -> void:
 	is_pipe=cond
 	just_started=cond
+
 @rpc("call_local")
 func reset_scene():
 	get_tree().paused = false
@@ -96,7 +97,3 @@ func reset_scene():
 	
 func _on_replay_pressed() -> void:
 	reset_scene.rpc()
-
-
-func _on_bird_pressed() -> void:
-	pass # Replace with function body.

@@ -19,6 +19,7 @@ var speed:=50.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	await get_tree().process_frame
 	up_start_y = up.position.y  # store original position
 	down_start_y= down.position.y
 	start_y=position.y
@@ -45,7 +46,7 @@ func in_out():
 	
 func Up_down():
 	position.y= start_y+sin(time * frequency) * amplitude
-
+	
 
 func _on_up_body_entered(body: Node2D) -> void:
 	if body is Bird:
