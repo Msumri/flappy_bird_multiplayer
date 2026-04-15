@@ -48,11 +48,13 @@ func Up_down():
 
 
 func _on_up_body_entered(body: Node2D) -> void:
-	Gameover.emit() # Replace with function body.
+	if body is Bird:
+		Gameover.emit() # Replace with function body.
 
 
 func _on_down_body_entered(body: Node2D) -> void:
-	Gameover.emit()
+	if body is Bird:
+		Gameover.emit()
 
 
 func _on_score_body_entered(body: Node2D) -> void:

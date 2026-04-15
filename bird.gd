@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name  Bird
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -285.0

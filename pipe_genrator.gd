@@ -10,7 +10,6 @@ var score:int=0
 var is_pipe=true
 var just_started=true
 func _ready() -> void:
-
 	$"../ground/AnimationPlayer".play("ground")
 	if multiplayer.is_server():
 		replay.disabled=false
@@ -97,3 +96,7 @@ func reset_scene():
 	
 func _on_replay_pressed() -> void:
 	reset_scene.rpc()
+
+
+func _on_bird_pressed() -> void:
+	pass # Replace with function body.

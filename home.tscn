@@ -148,7 +148,9 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_vqw7c")
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 27
-text = "Waiting on peer..."
+text = "Waiting on peer 
+to connect..."
+horizontal_alignment = 1
 
 [node name="x" type="Button" parent="waiting/PanelContainer" unique_id=402651964]
 custom_minimum_size = Vector2(25, 25)
