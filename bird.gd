@@ -13,7 +13,7 @@ func _ready() -> void:
 	sprite_2d.play("default")
 
 func _physics_process(delta: float) -> void:
-	#if !is_multiplayer_authority(): return
+	if !is_multiplayer_authority(): return
 	#if !playable: return
 	# Add the gravity.
 	if not is_on_floor():

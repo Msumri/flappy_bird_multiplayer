@@ -10,8 +10,8 @@ var time := 0.0
 var start_y:=0.0
 var up_start_y = 0.0
 var down_start_y = 0.0
-var is_updown1:=true
-var is_inout1:=false
+var is_updown:=true
+var is_inout:=false
 var send:=true
 var speed:=50.0
 @export var amplitude = 80.0  # How far up/down it goes
@@ -27,11 +27,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	time += delta
-	if is_updown1:
+	if is_updown:
 		Up_down()
-	elif is_inout1:
+	elif is_inout:
 		in_out()
-	if  !is_updown1 and !is_inout1:
+	if  !is_updown and !is_inout:
 		position.x-=speed*delta
 		if send:
 			send_pipe.emit()
@@ -63,12 +63,5 @@ func _on_score_body_entered(body: Node2D) -> void:
 
 
 func _on_timer_timeout() -> void:
-	is_updown1=false
-	is_inout1=false
-@rpc("any_peer","call_local")	
-func is_updown(stat:bool):
-	is_updown1=stat
-	
-@rpc("any_peer","call_local")	
-func is_inout(stat:bool):
-	is_inout1=stat
+	is_updown=false
+	is_inout=false

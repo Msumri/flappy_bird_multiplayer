@@ -29,7 +29,7 @@ func _on_join_pressed() -> void:
 func change_scene_rpc():
 	await get_tree().create_timer(0.5).timeout
 	if get_tree() != null:
-		get_tree().change_scene_to_file("res://gmae.tscn")
+		get_tree().change_scene_to_file("res://demo/demo_game.tscn")
 		return
 	#get_tree().change_scene_to_file("res://gmae.tscn")
 

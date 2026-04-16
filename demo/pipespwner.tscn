@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://ct8iafnn47etb"]
+
+[ext_resource type="Script" uid="uid://nu7y2d6n3ejg" path="res://demo/pipespwner.gd" id="1_kypx0"]
+[ext_resource type="PackedScene" uid="uid://c6xopfmtaqohc" path="res://pipe.tscn" id="2_67nfi"]
+
+[node name="pipespwner" type="Node2D" unique_id=1800525283]
+script = ExtResource("1_kypx0")
+pipe_obj = ExtResource("2_67nfi")
+
+[node name="Timer" type="Timer" parent="." unique_id=1633344253]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
