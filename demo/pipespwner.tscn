@@ -8,7 +8,7 @@ script = ExtResource("1_kypx0")
 pipe_obj = ExtResource("2_67nfi")
 
 [node name="Timer" type="Timer" parent="." unique_id=1633344253]
-wait_time = 3.0
+wait_time = 0.5
 one_shot = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

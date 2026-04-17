@@ -35,7 +35,7 @@ properties/5/replication_mode = 1
 [node name="pipe" type="Node2D" unique_id=2056681395]
 script = ExtResource("1_78010")
 
-[node name="up" type="Area2D" parent="." unique_id=1232150486]
+[node name="up" type="Area2D" parent="." unique_id=1232150486 groups=["death"]]
 unique_name_in_owner = true
 position = Vector2(0, -50)
 
@@ -48,7 +48,7 @@ flip_v = true
 position = Vector2(0, -159)
 shape = SubResource("RectangleShape2D_yxi3h")
 
-[node name="down" type="Area2D" parent="." unique_id=1659503416]
+[node name="down" type="Area2D" parent="." unique_id=1659503416 groups=["death"]]
 unique_name_in_owner = true
 position = Vector2(0, 50)
 
@@ -60,7 +60,7 @@ texture = ExtResource("2_arayy")
 position = Vector2(0, 160)
 shape = SubResource("RectangleShape2D_ys0ae")
 
-[node name="score" type="Area2D" parent="." unique_id=2091847819]
+[node name="score" type="Area2D" parent="." unique_id=2091847819 groups=["point"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="score" unique_id=664744777]
 position = Vector2(0.5, 14.5)

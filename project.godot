@@ -26,6 +26,12 @@ window/size/viewport_height=512
 window/stretch/mode="canvas_items"
 window/stretch/scale_mode="integer"
 
+[global_group]
+
+death=""
+point=""
+bird=""
+
 [gui]
 
 theme/default_font_hinting=2

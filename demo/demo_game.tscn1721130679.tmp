@@ -4,26 +4,15 @@
 [ext_resource type="Script" uid="uid://c837miyk3oj3i" path="res://demo/multiplayer_spawner.gd" id="2_w3d3l"]
 [ext_resource type="PackedScene" uid="uid://ijkd5nf4hsqm" path="res://bird.tscn" id="3_awij2"]
 [ext_resource type="Texture2D" uid="uid://b8ykx6y1fvkje" path="res://assets/sprites/gameover.png" id="3_bt0ar"]
-[ext_resource type="Texture2D" uid="uid://dvthyoaffwnd1" path="res://assets/sprites/1.png" id="3_ge2t3"]
 [ext_resource type="Texture2D" uid="uid://cq1cy8kbrvekd" path="res://assets/sprites/0.png" id="4_awij2"]
 [ext_resource type="PackedScene" uid="uid://ct8iafnn47etb" path="res://demo/pipespwner.tscn" id="4_i2rvf"]
-[ext_resource type="Texture2D" uid="uid://bt41v5jladxoi" path="res://assets/sprites/2.png" id="4_x2bi5"]
-[ext_resource type="Texture2D" uid="uid://df8moqd1lhxg0" path="res://assets/sprites/3.png" id="5_ep048"]
 [ext_resource type="Texture2D" uid="uid://bujq32uj83j5i" path="res://assets/sprites/background-day.png" id="5_i2rvf"]
 [ext_resource type="Texture2D" uid="uid://bambsr0wucjtj" path="res://assets/sprites/base.png" id="6_7utuf"]
-[ext_resource type="Texture2D" uid="uid://h2jkq1k55dwt" path="res://assets/sprites/4.png" id="6_ifk3m"]
 [ext_resource type="Texture2D" uid="uid://b6co623glw8w6" path="res://assets/box bg.png" id="7_04mti"]
-[ext_resource type="Texture2D" uid="uid://7p0r15itdyju" path="res://assets/sprites/5.png" id="7_7eh20"]
 [ext_resource type="Texture2D" uid="uid://dt4ese8qniijf" path="res://assets/birdiconoff.png" id="8_435en"]
-[ext_resource type="Texture2D" uid="uid://fmy64v56jabx" path="res://assets/sprites/6.png" id="8_3764l"]
-[ext_resource type="Texture2D" uid="uid://cdh71v8i5h1h" path="res://assets/sprites/7.png" id="9_fsrdc"]
 [ext_resource type="Texture2D" uid="uid://dwb02g2dmosro" path="res://assets/pipeicon.png" id="9_pvmlj"]
-[ext_resource type="Texture2D" uid="uid://boxqj6tmyqgev" path="res://assets/sprites/8.png" id="10_5vkny"]
 [ext_resource type="Texture2D" uid="uid://bavuw57hfn7bn" path="res://assets/birdicon.png" id="10_md4oq"]
 [ext_resource type="Texture2D" uid="uid://bqe17qu5jv6f7" path="res://assets/pipeiconoff.png" id="11_08pav"]
-[ext_resource type="Texture2D" uid="uid://dqbxrqc2gt7gl" path="res://assets/sprites/9.png" id="11_f44ch"]
-[ext_resource type="AudioStream" uid="uid://bj1w3xfy0nqd4" path="res://assets/audio/hit.wav" id="23_ep048"]
-[ext_resource type="AudioStream" uid="uid://bttb6c26r1244" path="res://assets/audio/point.wav" id="24_ifk3m"]
 
 [sub_resource type="Theme" id="Theme_eqycw"]
 
@@ -109,7 +98,6 @@ normal = Vector2(0, 1)
 
 [node name="DemoGame" type="Node2D" unique_id=1900252408]
 script = ExtResource("1_1u653")
-scores = Array[Texture2D]([ExtResource("4_awij2"), ExtResource("3_ge2t3"), ExtResource("4_x2bi5"), ExtResource("5_ep048"), ExtResource("6_ifk3m"), ExtResource("7_7eh20"), ExtResource("8_3764l"), ExtResource("9_fsrdc"), ExtResource("10_5vkny"), ExtResource("11_f44ch")])
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="." unique_id=310522117]
 _spawnable_scenes = PackedStringArray("uid://ijkd5nf4hsqm", "uid://ct8iafnn47etb", "uid://c6xopfmtaqohc")
@@ -176,13 +164,8 @@ stretch_mode = 2
 unique_name_in_owner = true
 process_mode = 3
 physics_interpolation_mode = 1
-custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
-size_flags_horizontal = 4
 theme = SubResource("Theme_eqycw")
-theme_override_colors/font_outline_color = Color(0.32941177, 0.21960784, 0.2784314, 1)
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 27
 theme_override_styles/normal = SubResource("StyleBoxFlat_ge2t3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_x2bi5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ep048")
@@ -191,13 +174,8 @@ text = "Play Again"
 [node name="home" type="Button" parent="gameover/VBoxContainer" unique_id=1995441185]
 process_mode = 3
 physics_interpolation_mode = 1
-custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
-size_flags_horizontal = 4
 theme = SubResource("Theme_eqycw")
-theme_override_colors/font_outline_color = Color(0.32941177, 0.21960784, 0.2784314, 1)
-theme_override_constants/outline_size = 7
-theme_override_font_sizes/font_size = 27
 theme_override_styles/normal = SubResource("StyleBoxFlat_ge2t3")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_x2bi5")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ep048")
@@ -218,8 +196,6 @@ texture = ExtResource("5_i2rvf")
 stretch_mode = 2
 
 [node name="ground" type="Area2D" parent="." unique_id=1385879852]
-unique_name_in_owner = true
-z_index = 2
 position = Vector2(168, 500)
 
 [node name="Sprite2D" type="Sprite2D" parent="ground" unique_id=631318238]
@@ -279,10 +255,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -113.5
-offset_top = -73.5
-offset_right = 113.5
-offset_bottom = 73.5
+offset_left = -116.0
+offset_top = -256.0
+offset_right = 111.0
+offset_bottom = -109.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("7_04mti")
@@ -299,22 +275,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 15
+theme_override_constants/separation = 25
 alignment = 1
 
 [node name="selectRoll" type="Label" parent="select_yourRole/NinePatchRect/VBoxContainer" unique_id=723008465]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = 0
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 35
 text = "Select your Role !"
-horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="select_yourRole/NinePatchRect/VBoxContainer" unique_id=2017451727]
 layout_mode = 2
@@ -327,6 +295,7 @@ layout_mode = 2
 texture_normal = ExtResource("8_435en")
 texture_pressed = ExtResource("10_md4oq")
 texture_hover = ExtResource("10_md4oq")
+texture_disabled = ExtResource("8_435en")
 
 [node name="pip" type="TextureButton" parent="select_yourRole/NinePatchRect/VBoxContainer/HBoxContainer" unique_id=18347977]
 unique_name_in_owner = true
@@ -336,85 +305,5 @@ texture_pressed = ExtResource("9_pvmlj")
 texture_hover = ExtResource("9_pvmlj")
 texture_disabled = ExtResource("11_08pav")
 
-[node name="are you sure" type="CanvasLayer" parent="." unique_id=365376628]
-unique_name_in_owner = true
-visible = false
-
-[node name="NinePatchRect" type="NinePatchRect" parent="are you sure" unique_id=323199383]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -113.0
-offset_top = 9.0
-offset_right = 114.0
-offset_bottom = 156.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("7_04mti")
-region_rect = Rect2(0, 0, 113, 58)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 9
-patch_margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="are you sure/NinePatchRect" unique_id=732775930]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 15
-alignment = 1
-
-[node name="selectRoll" type="Label" parent="are you sure/NinePatchRect/VBoxContainer" unique_id=112720453]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/line_spacing = 0
-theme_override_constants/shadow_offset_x = 2
-theme_override_constants/shadow_offset_y = 2
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 39
-text = "Player left !"
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="are you sure/NinePatchRect/VBoxContainer" unique_id=105619199]
-layout_mode = 2
-theme_override_constants/separation = 50
-alignment = 1
-
-[node name="g0home" type="Button" parent="are you sure/NinePatchRect/VBoxContainer/HBoxContainer" unique_id=1698747908]
-process_mode = 3
-physics_interpolation_mode = 1
-custom_minimum_size = Vector2(150, 30)
-layout_mode = 2
-size_flags_horizontal = 4
-theme = SubResource("Theme_eqycw")
-theme_override_colors/font_outline_color = Color(0.32941177, 0.21960784, 0.2784314, 1)
-theme_override_constants/outline_size = 7
-theme_override_font_sizes/font_size = 27
-theme_override_styles/normal = SubResource("StyleBoxFlat_ge2t3")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_x2bi5")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ep048")
-text = "Home"
-
-[node name="hit" type="AudioStreamPlayer" parent="." unique_id=997925623]
-unique_name_in_owner = true
-process_mode = 3
-stream = ExtResource("23_ep048")
-
-[node name="piont" type="AudioStreamPlayer" parent="." unique_id=358367662]
-unique_name_in_owner = true
-stream = ExtResource("24_ifk3m")
-
-[connection signal="spawned" from="MultiplayerSpawner" to="." method="_on_multiplayer_spawner_spawned"]
-[connection signal="pressed" from="gameover/VBoxContainer/replay" to="." method="_on_replay_pressed"]
-[connection signal="pressed" from="gameover/VBoxContainer/home" to="." method="_on_home_pressed"]
-[connection signal="body_entered" from="ground" to="." method="_on_ground_body_entered"]
 [connection signal="pressed" from="select_yourRole/NinePatchRect/VBoxContainer/HBoxContainer/bird" to="MultiplayerSpawner" method="_on_bird_pressed"]
 [connection signal="pressed" from="select_yourRole/NinePatchRect/VBoxContainer/HBoxContainer/pip" to="MultiplayerSpawner" method="_on_pip_pressed"]
-[connection signal="pressed" from="are you sure/NinePatchRect/VBoxContainer/HBoxContainer/g0home" to="." method="_on_g_0_home_pressed"]

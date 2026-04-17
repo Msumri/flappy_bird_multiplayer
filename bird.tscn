@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b1l5vjxrfv6ph" path="res://assets/sprites/yellowbird-downflap.png" id="2_6ljjq"]
 [ext_resource type="Texture2D" uid="uid://b3lph2ukamg41" path="res://assets/sprites/yellowbird-midflap.png" id="3_axl6x"]
 [ext_resource type="Texture2D" uid="uid://dndwv1m0gvbaf" path="res://assets/sprites/yellowbird-upflap.png" id="4_yr30m"]
+[ext_resource type="AudioStream" uid="uid://cloffrpx628jh" path="res://assets/audio/wing.wav" id="5_6ljjq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ys0ae"]
 atlas = ExtResource("2_6ljjq")
@@ -49,7 +50,10 @@ properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
 properties/1/replication_mode = 1
 
-[node name="bird" type="CharacterBody2D" unique_id=1585531778]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cchwj"]
+radius = 12.0
+
+[node name="bird" type="CharacterBody2D" unique_id=1585531778 groups=["bird"]]
 z_index = 1
 script = ExtResource("1_cchwj")
 
@@ -64,3 +68,14 @@ shape = SubResource("CapsuleShape2D_yxi3h")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." unique_id=1110460067]
 replication_config = SubResource("SceneReplicationConfig_08fvl")
+
+[node name="hitbox" type="Area2D" parent="." unique_id=359035573 groups=["bird"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=1040347101]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_cchwj")
+
+[node name="wing" type="AudioStreamPlayer" parent="." unique_id=337504389]
+stream = ExtResource("5_6ljjq")
+
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]

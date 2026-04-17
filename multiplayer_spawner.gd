@@ -2,6 +2,7 @@ extends MultiplayerSpawner
 
 @export var network_player: PackedScene
 
+@onready var select_roll: Label = %selectRoll
 
 var bird
 func _ready() -> void:
