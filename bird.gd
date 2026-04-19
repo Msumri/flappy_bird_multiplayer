@@ -9,7 +9,7 @@ const JUMP_VELOCITY = -285.0
 @onready var wing: AudioStreamPlayer = $wing
 func _enter_tree() -> void:
 	set_multiplayer_authority(name.to_int())
-	global_position=Vector2(55,321)
+	global_position=Vector2(55,200)
 
 func _ready() -> void:
 	sprite_2d.play("default")
