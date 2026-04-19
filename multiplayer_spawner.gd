@@ -17,14 +17,13 @@ func spawn_player(id: int) -> void:
 
 	var player: Node = network_player.instantiate()
 	
-	# Node name is synchronized through MultiplayerSpawner, we can use this to set authority to the player.
 	player.name = str(id)
 	player.set_multiplayer_authority(id)
 
 	get_node(spawn_path).call_deferred("add_child", player)
 	player.playable=true
- #In this function, which is connected to the "host_started" signal in the high_level_network_handler
-# class, we spawn the server player. Easy right?
+
+
 @rpc("any_peer", "call_local")
 func on_choice(id:int):
 	hidethings.rpc()

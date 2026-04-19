@@ -36,8 +36,7 @@ func _request_game_over() -> void:
 	print("requested")
 	if multiplayer.is_server():
 		apply_game_over.rpc()
-	else:
-		request_game_over.rpc_id(1)
+
 @rpc("any_peer", "call_remote")
 func request_game_over() -> void:
 	print("gameover")

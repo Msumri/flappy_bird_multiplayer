@@ -25,10 +25,10 @@ func _input(event: InputEvent) -> void:
 				spawn_pipe.rpc()
 				just_started=false
 			elif currentpipe and not currentpipe.is_updown1:
-				currentpipe.is_inout.rpc(false)
+				currentpipe.is_inout=false
 			else:
-				currentpipe.is_inout.rpc(true)
-				currentpipe.is_updown.rpc(false)
+				currentpipe.is_inout=true
+				currentpipe.is_updown=false
 		
 @rpc("any_peer","call_local")		
 func spawn_pipe():

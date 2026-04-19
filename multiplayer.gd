@@ -8,12 +8,12 @@ var peer: ENetMultiplayerPeer
 var p2_id:int
 func start_server() -> void:
 	peer = ENetMultiplayerPeer.new()
-	#var success = setup_upnp(PORT)
+	var success = setup_upnp(PORT)
 	
-	#if success:
-	#	print("UPnP succeeded")
-	#else:
-	#	print("UPnP failed (still trying to host anyway)")
+	if success:
+		print("UPnP succeeded")
+	else:
+		print("UPnP failed (still trying to host anyway)")
 
 	peer.create_server(PORT,2)
 	multiplayer.multiplayer_peer = peer
